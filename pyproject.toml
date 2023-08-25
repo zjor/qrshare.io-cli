@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "qrshare.io-cli"
-version = "0.0.1"
+version = "0.0.2"
 description = "A CLI tool for uploading files with https://qrshare.io service"
 authors = ["Sergey Royz <zjor.se@gmail.com>"]
 readme = "README.md"
