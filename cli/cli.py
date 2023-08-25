@@ -85,7 +85,7 @@ def generate_ascii_qr_code(qr: TextToQR, margin: int = 2) -> List[str]:
 
 def main():
     if len(sys.argv) != 2:
-        print(f"Usage: 'command' <filename>")
+        print(f"Usage: qrs <filename>")
         sys.exit(-1)
 
     response = upload(sys.argv[1])
