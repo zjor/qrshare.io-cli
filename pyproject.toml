@@ -4,6 +4,8 @@ version = "0.0.1"
 description = "A CLI tool for uploading files with https://qrshare.io service"
 authors = ["Sergey Royz <zjor.se@gmail.com>"]
 readme = "README.md"
+homepage = "https://qrshare.io"
+repository = "https://github.com/zjor/qrshare.io-cli"
 packages = [{include = "cli"}]
 
 [tool.poetry.dependencies]
