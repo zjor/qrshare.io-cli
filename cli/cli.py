@@ -6,6 +6,9 @@ import logging
 from typing import NamedTuple, Union, List
 from datetime import datetime
 
+from cli.colors import colored
+from cli.ascii_table import print_file_details
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -31,21 +34,6 @@ class UploadResponse(NamedTuple):
     uploadedAt: datetime
     expiresAt: datetime
     jqr: dict
-
-
-def colored(text: str, color: str = "white"):
-    color_codes = {
-        "black": "\033[30m",
-        "red": "\033[31m",
-        "green": "\033[32m",
-        "yellow": "\033[33m",
-        "blue": "\033[34m",
-        "magenta": "\033[35m",
-        "cyan": "\033[36m",
-        "white": "\033[97m",
-    }
-
-    return color_codes[color] + text + "\033[0m"
 
 
 def upload(filename: str) -> UploadResponse:
@@ -93,7 +81,8 @@ def main():
     for line in code:
         print(colored(line))
 
-    print(f"\tDownload URL: {colored(response.url, 'green')}\n\n")
+    print_file_details(response.filename, response.size, response.url)
+    print()
 
 
 if __name__ == "__main__":
