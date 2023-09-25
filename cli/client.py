@@ -41,7 +41,7 @@ class Client:
         print(f"Uploading: {colored(filename)}...")
         with open(filename, "rb") as f:
             data = {"file": (re.split(r"/|\\", filename)[-1], f)}
-            response = requests.post(f"{self.base_url}/api/upload", files=data)
+            response = requests.post(f"{self.base_url}/api/upload?ddl=true", files=data)
             response_content = response.json()
 
             logger.debug(f"{response.status_code}\n{response_content}")

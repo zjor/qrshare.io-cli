@@ -1,14 +1,12 @@
-import re
 import sys
 import base64
-import requests
 import logging
-from typing import NamedTuple, Union, List
-from datetime import datetime
+import sys
+from typing import List
 
+from cli.ascii_table import print_file_details
 from cli.client import TextToQR, Client
 from cli.colors import colored
-from cli.ascii_table import print_file_details
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -40,14 +38,12 @@ def main():
         sys.exit(-1)
     client = Client()
     response = client.upload(sys.argv[1])
-    download_url = client.get_direct_download_url(response.dir)
 
-    # TODO: generate QR-code locally
-    code = generate_ascii_qr_code(client.text_to_qr(download_url))
+    code = generate_ascii_qr_code(TextToQR(**response.jqr))
     for line in code:
         print(colored(line))
 
-    print_file_details(response.filename, response.size, download_url)
+    print_file_details(response.filename, response.size, response.url)
     print()
 
 
